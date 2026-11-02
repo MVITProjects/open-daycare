@@ -1,0 +1,19 @@
+{
+  "mcp": {
+    "servers": {
+      "playwright": {
+        "type": "local",
+        "command": [
+          "npx", 
+          "-y", 
+          "@playwright/mcp@latest", 
+          "--executable-path", 
+          "/home/matiasvinales/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome", 
+          "--no-sandbox"
+        ],
+        "environment": {},
+        "disabled": false
+      }
+    }
+  }
+}
