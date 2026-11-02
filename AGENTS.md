@@ -31,25 +31,24 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Design source of truth
 
-- The app UI must be built from the HTML mockups in `references/pantallas/*.dc.html` (Spanish screen names: `login`, `feed`, `avisos`, `ninos`, `perfil-nino`, `resumen-dia`, `vincular-padre`, `mi-cuenta`, ...). These are static mockups, not app routes; `app/` is still the untouched create-next-app template.
+- The app UI must be built from the HTML mockups in `references/pantallas/*.dc.html` (Spanish screen names: `login`, `feed`, `avisos`, `ninos`, `perfil-nino`, `resumen-dia`, `vincular-padre`, `mi-cuenta`, ...). These are static mockups, not app routes; `app/` is still the untouched create-next-app template. `references/pantallas/index.dc.html` serves as the visual gallery and index of all screens.
 - `references/screenshots/*.png` — quick visual captures of the same screens.
 - Design language from the mockups: fonts Fredoka + Nunito, warm palette (background `#FBF4EC`, text `#3F362E`, coral gradients `#F6A98E`/`#EC7E62`). UI copy is Spanish.
 - `references/pantallas/support.js` is generated runtime for the mockups — reference only, never edit or port it.
 
-## Workflow
+## Spec-Driven Development Workflow
 
-- New features are spec-driven: run the `/spec` skill (`.agents/skills/spec/SKILL.md`) before writing code for anything non-trivial. Specs are saved as `specs/NN-slug.md` (folder created by the first spec) and written in the same language as the user's prompt.
-- `skills-lock.json` pins the skill's source — don't edit it by hand.
+All new features and non-trivial modifications follow a strict spec-driven development cycle using the skills pinned in `.agents/skills/`:
+
+1. **Specification — `/spec`** (`.agents/skills/spec/SKILL.md`): Run before writing any code. Clarifies requirements through structured Q&A and produces a formal specification in `specs/NN-slug.md` (written in the same language as the prompt).
+2. **Implementation — `/spec-impl`** (`.agents/skills/spec-impl/SKILL.md`): Run to implement an approved spec (`Status: Approved` / `Estado: Aprobado`). Validates approval, creates and switches to a dedicated feature branch, and executes changes step-by-step with diff reviews.
+
+- `skills-lock.json` pins the skills' sources and hashes — do not edit it by hand.
 
 ## MCPs
 
-- Playwright: all screenshots and related artifacts must go in `.playwright-mcp/` (gitignored). Config in `opencode.json` (pinned local Chromium, `--no-sandbox`).
+- Playwright: all screenshots and related artifacts must go in `.playwright-mcp/` (gitignored). MCP config in `opencode.json` and `.agents/mcp_config.json` (pinned local Chromium, `--no-sandbox`).
 - Context7: use it for framework/library documentation instead of relying on training data.
-
-## Spec Driven Developtment
-
-- /spec We will use this ability to create the specifications.
-- /spec-impl We will use this skill to make the implementations.
 
 <!-- BEGIN:nextjs-agent-feedback -->
 
