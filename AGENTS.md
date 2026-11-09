@@ -42,7 +42,7 @@ All new features and non-trivial modifications follow a strict spec-driven devel
 
 1. **Specification — `/spec`** (`.agents/skills/spec/SKILL.md`): Run before writing any code. Clarifies requirements through structured Q&A and produces a formal specification in `specs/NN-slug.md` (written in the same language as the prompt).
 2. **Implementation — `/spec-impl`** (`.agents/skills/spec-impl/SKILL.md`): Run to implement an approved spec (`Status: Approved` / `Estado: Aprobado`). Validates approval, creates and switches to a dedicated feature branch, and executes changes step-by-step with diff reviews.
-3. **Verification — `@spec-verifier` / `/spec-verify`** (`.opencode/agents/spec-verifier.md` and `.agents/skills/spec-verify/SKILL.md`): Project-level verification agent powered by vision model Qwen3.7 Plus (`opencode-go/qwen3.7-plus`). Reviews, corrects, and checks off items under `## Acceptance criteria` using Context7 for Next.js 16 best practices and Playwright MCP for visual UI inspection against mockups.
+3. **Verification — `/spec-verify` or `/spec-verifier`** (`.opencode/agents/spec-verifier.md` and `.agents/skills/spec-verify/SKILL.md`): Project-level verification agent powered by vision model Qwen3.7 Plus (`opencode-go/qwen3.7-plus`). Reviews, corrects, and checks off items under `## Acceptance criteria` using Context7 for Next.js 16 best practices and Playwright MCP for visual UI inspection against mockups. Invoke as `@spec-verifier` in chat or via CLI with `opencode --agent spec-verifier`.
 
 - `skills-lock.json` pins the skills' sources and hashes — do not edit it by hand.
 

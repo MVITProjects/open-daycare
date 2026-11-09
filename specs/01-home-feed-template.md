@@ -1,6 +1,6 @@
 # SPEC 01 — Home feed template
 
-> **Status:** Approved  
+> **Status:** Implemented  
 > **Depends on:** None
 > **Date:** 2026-11-07
 > **Objective:** Implement the home page `/` matching the visual design, typography, and static structure of `references/pantallas/feed.dc.html` using Tailwind CSS and mock data.
@@ -118,18 +118,18 @@ export interface UserProfile {
 
 ## Acceptance criteria
 
-- [ ] `app/layout.tsx` loads `Fredoka` and `Nunito` Google fonts, applying `Nunito` as primary body font and `#F6ECDF` background.
-- [ ] The desktop sidebar is 248px wide, sticky, with "OpenDayCare", "Sala Soles", "+ Nueva publicación" button, navigation items, and user profile footer.
-- [ ] The "Feed" item in the sidebar displays the active highlighted style (`background: #FBE3D8`, `color: #D9583C`).
-- [ ] Navigation and action links point to intended routes (`/`, `/ninos`, `/avisos`, `/mi-cuenta`, `/crear-publicacion`, `/login`).
-- [ ] The feed header displays "GUARDERÍA · SALA SOLES", "Buenas, Caro", and "12 niños · martes 17 jun".
-- [ ] The quick action prompt "Compartí un momento…" renders with camera icon and links to `/crear-publicacion`.
-- [ ] The 3 mock posts from `feed.dc.html` use English category states (`milestone`, `activity`, `announcement`) and are displayed in the UI template with their Spanish badges and correct colors:
-  - [ ] `milestone` rendered as "LOGRO" with green badge.
-  - [ ] `activity` rendered as "ACTIVIDAD" with teal badge and dashed photo placeholder.
-  - [ ] `announcement` rendered as "ANUNCIO" with blue/purple badge.
-- [ ] `npx tsc --noEmit` passes clean with 0 errors.
-- [ ] `npm run build` succeeds without build errors.
+- [x] `app/layout.tsx` loads `Fredoka` and `Nunito` Google fonts, applying `Nunito` as primary body font and `#F6ECDF` background.
+- [x] The desktop sidebar is 248px wide, sticky, with "OpenDayCare", "Sala Soles", "+ Nueva publicación" button, navigation items, and user profile footer.
+- [x] The "Feed" item in the sidebar displays the active highlighted style (`background: #FBE3D8`, `color: #D9583C`).
+- [x] Navigation and action links point to intended routes (`/`, `/ninos`, `/avisos`, `/mi-cuenta`, `/crear-publicacion`, `/login`).
+- [x] The feed header displays "GUARDERÍA · SALA SOLES", "Buenas, Caro", and "12 niños · martes 17 jun".
+- [x] The quick action prompt "Compartí un momento…" renders with camera icon and links to `/crear-publicacion`.
+- [x] The 3 mock posts from `feed.dc.html` use English category states (`milestone`, `activity`, `announcement`) and are displayed in the UI template with their Spanish badges and correct colors:
+  - [x] `milestone` rendered as "LOGRO" with green badge.
+  - [x] `activity` rendered as "ACTIVIDAD" with teal badge and dashed photo placeholder.
+  - [x] `announcement` rendered as "ANUNCIO" with blue/purple badge.
+- [x] `npx tsc --noEmit` passes clean with 0 errors.
+- [x] `npm run build` succeeds without build errors.
 
 ---
 
