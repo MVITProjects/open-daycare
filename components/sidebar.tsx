@@ -35,7 +35,7 @@ const NAV_ITEMS: {
   {
     key: "ninos",
     label: "Niños",
-    href: "/ninos",
+    href: "/kids",
     icon: (
       <svg
         width="19"
