@@ -1,6 +1,6 @@
 # SPEC 03 — Login screen
 
-> **Status:** Approved  
+> **Status:** Implemented  
 > **Depends on:** SPEC 01  
 > **Date:** 2026-11-10  
 > **Objective:** Implement the `/login` authentication screen matching the visual design, branding, and typography of `references/pantallas/login.dc.html`, excluding the role selector ("Personal" and "Familiar" buttons).
@@ -95,19 +95,19 @@ export interface LoginFormState {
 
 ## Acceptance criteria
 
-- [ ] Route `/login` exists and loads without requiring authentication or throwing errors.
-- [ ] Left column displays the coral gradient banner with brand logo, "OpenDayCare", headline "El día de cada niño, compartido con su familia.", and footer badge "🌿 Guardería Sala Soles".
-- [ ] Right column contains the "Iniciar sesión" title and subtitle "Ingresá para ver el día de hoy.".
-- [ ] The "INGRESO COMO" section and role toggle buttons ("Personal" and "Familia") are NOT rendered anywhere on the screen.
-- [ ] Email input is present with empty initial state and placeholder.
-- [ ] Password input is present with masked input type and placeholder `••••••••`.
-- [ ] "¿Olvidaste tu contraseña?" link is displayed right-aligned in red/coral `#C5503A`.
-- [ ] "Iniciar sesión" button is styled with coral gradient, rounded corners, and shadow matching the mockup.
-- [ ] Submitting the form or clicking "Iniciar sesión" redirects the user to `/` (home feed).
-- [ ] Footer copy displays "¿Te invitó la guardería? Activá tu cuenta" with highlighted link.
-- [ ] Sidebar is NOT displayed on the `/login` route.
-- [ ] Clicking the "Cerrar sesión" button in the sidebar from `/` or `/kids` navigates directly to `/login`.
-- [ ] TypeScript check (`npx tsc --noEmit`) passes without errors.
+- [x] Route `/login` exists and loads without requiring authentication or throwing errors.
+- [x] Left column displays the coral gradient banner with brand logo, "OpenDayCare", headline "El día de cada niño, compartido con su familia.", and footer badge "🌿 Guardería Sala Soles".
+- [x] Right column contains the "Iniciar sesión" title and subtitle "Ingresá para ver el día de hoy.".
+- [x] The "INGRESO COMO" section and role toggle buttons ("Personal" and "Familia") are NOT rendered anywhere on the screen.
+- [x] Email input is present with empty initial state and placeholder.
+- [x] Password input is present with masked input type and placeholder `••••••••`.
+- [x] "¿Olvidaste tu contraseña?" link is displayed right-aligned in red/coral `#C5503A`.
+- [x] "Iniciar sesión" button is styled with coral gradient, rounded corners, and shadow matching the mockup.
+- [x] Submitting the form or clicking "Iniciar sesión" redirects the user to `/` (home feed).
+- [x] Footer copy displays "¿Te invitó la guardería? Activá tu cuenta" with highlighted link.
+- [x] Sidebar is NOT displayed on the `/login` route.
+- [x] Clicking the "Cerrar sesión" button in the sidebar from `/` or `/kids` navigates directly to `/login`.
+- [x] TypeScript check (`npx tsc --noEmit`) passes without errors.
 
 ---
 
