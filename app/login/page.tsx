@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LoginForm } from "@/components/login/login-form";
 
 export const metadata: Metadata = {
   title: "Iniciar sesión · OpenDayCare",
@@ -52,6 +53,12 @@ export default function LoginPage() {
 
         <div className="relative mt-10 text-[14px] text-white/[0.90] lg:mt-0">
           🌿 Guardería Sala Soles
+        </div>
+      </div>
+
+      <div className="flex items-center justify-center px-7 py-12 sm:p-10">
+        <div className="w-full max-w-[392px]">
+          <LoginForm />
         </div>
       </div>
     </div>
