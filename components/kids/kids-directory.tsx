@@ -21,9 +21,15 @@ function parentsSummary(kid: KidProfile): string {
 export function KidsDirectory({ kids }: KidsDirectoryProps) {
   const [query, setQuery] = useState("");
 
-  const normalizedQuery = query.trim().toLowerCase();
+  const normalizeText = (text: string) =>
+    text
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+  const normalizedQuery = normalizeText(query.trim());
   const filteredKids = normalizedQuery
-    ? kids.filter((kid) => kid.name.toLowerCase().includes(normalizedQuery))
+    ? kids.filter((kid) => normalizeText(kid.name).includes(normalizedQuery))
     : kids;
 
   return (
