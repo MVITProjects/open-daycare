@@ -1,6 +1,6 @@
 # SPEC 02 — Kids directory and profiles
 
-> **Status:** Approved  
+> **Status:** Implemented  
 > **Depends on:** SPEC 01  
 > **Date:** 2026-11-09  
 > **Objective:** Implement the `/kids` directory page and dynamic `/kids/[slug]` kid profile page matching the visual design, typography, and structure of `references/pantallas/ninos.dc.html` and `references/pantallas/perfil-nino.dc.html`.
@@ -336,23 +336,23 @@ export const mockKids: KidProfile[] = [
 
 ## Acceptance criteria
 
-- [ ] `components/sidebar.tsx` points "Niños" to `/kids`.
-- [ ] Accessing `/ninos` automatically redirects to `/kids`.
-- [ ] `/kids` renders with the sticky sidebar (`activeItem="ninos"`), header "Niños", and "Agregar niño" button.
-- [ ] `/kids` displays all 8 children in a 2-column grid matching `references/pantallas/ninos.dc.html`.
-- [ ] Real-time search input on `/kids` filters the displayed children by name (case-insensitive) and updates the count badge.
-- [ ] Hovering over a kid card applies elevation and border highlight transitions matching the mockup.
-- [ ] Clicking any child card navigates to `/kids/[slug]`.
-- [ ] `/kids/[slug]` renders the full profile matching `references/pantallas/perfil-nino.dc.html`:
-  - [ ] "Volver a Niños" links back to `/kids`.
-  - [ ] Header displays large avatar, child name, age, room, and "Editar" button.
-  - [ ] Allergy alert box displays for children with `allergyNotes` (e.g. Mateo Fernández, Tomás Díaz) and gracefully omits for children without allergies.
-  - [ ] Data table correctly displays birth date, room, and enrollment date.
-  - [ ] "Resumen del día" CTA button is visible in the right column.
-  - [ ] Connected parents list displays avatars, relation descriptions, and status badges (`ACTIVA` / `PENDIENTE`).
-  - [ ] "Vincular otro padre" link is rendered.
-- [ ] Navigating to a non-existent slug (e.g. `/kids/non-existent`) invokes `notFound()` and shows the 404 view.
-- [ ] `npx tsc --noEmit` passes without errors.
+- [x] `components/sidebar.tsx` points "Niños" to `/kids`.
+- [x] Accessing `/ninos` automatically redirects to `/kids`.
+- [x] `/kids` renders with the sticky sidebar (`activeItem="ninos"`), header "Niños", and "Agregar niño" button.
+- [x] `/kids` displays all 8 children in a 2-column grid matching `references/pantallas/ninos.dc.html`.
+- [x] Real-time search input on `/kids` filters the displayed children by name (case-insensitive) and updates the count badge.
+- [x] Hovering over a kid card applies elevation and border highlight transitions matching the mockup.
+- [x] Clicking any child card navigates to `/kids/[slug]`.
+- [x] `/kids/[slug]` renders the full profile matching `references/pantallas/perfil-nino.dc.html`:
+  - [x] "Volver a Niños" links back to `/kids`.
+  - [x] Header displays large avatar, child name, age, room, and "Editar" button.
+  - [x] Allergy alert box displays for children with `allergyNotes` (e.g. Mateo Fernández, Tomás Díaz) and gracefully omits for children without allergies.
+  - [x] Data table correctly displays birth date, room, and enrollment date.
+  - [x] "Resumen del día" CTA button is visible in the right column.
+  - [x] Connected parents list displays avatars, relation descriptions, and status badges (`ACTIVA` / `PENDIENTE`).
+  - [x] "Vincular otro padre" link is rendered.
+- [x] Navigating to a non-existent slug (e.g. `/kids/non-existent`) invokes `notFound()` and shows the 404 view.
+- [x] `npx tsc --noEmit` passes without errors.
 
 ---
 
