@@ -1,12 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { AddKidModal } from "@/components/kids/add-kid-modal";
+import { useKidsStore, type AddKidFormData } from "@/lib/kids-store";
 import { mockUserProfile, type KidProfile } from "@/lib/mock-data";
-
-interface KidsDirectoryProps {
-  kids: KidProfile[];
-}
 
 function parentsSummary(kid: KidProfile): string {
   if (kid.parents.length === 0) {
@@ -18,8 +16,37 @@ function parentsSummary(kid: KidProfile): string {
     : `${kid.parents.length} padres vinculados`;
 }
 
-export function KidsDirectory({ kids }: KidsDirectoryProps) {
+interface ToastState {
+  id: number;
+  message: string;
+}
+
+export function KidsDirectory() {
+  const { kids, addKid } = useKidsStore();
   const [query, setQuery] = useState("");
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [toast, setToast] = useState<ToastState | null>(null);
+  const toastIdRef = useRef(0);
+
+  useEffect(() => {
+    if (!toast) {
+      return;
+    }
+
+    const timeout = window.setTimeout(() => setToast(null), 3500);
+    return () => window.clearTimeout(timeout);
+  }, [toast]);
+
+  const showToast = (message: string) => {
+    toastIdRef.current += 1;
+    setToast({ id: toastIdRef.current, message });
+  };
+
+  const handleSaveKid = (data: AddKidFormData) => {
+    addKid(data);
+    setIsAddModalOpen(false);
+    showToast("Niño agregado con éxito");
+  };
 
   const normalizeText = (text: string) =>
     text
@@ -45,6 +72,7 @@ export function KidsDirectory({ kids }: KidsDirectoryProps) {
         </div>
         <button
           type="button"
+          onClick={() => setIsAddModalOpen(true)}
           className="flex items-center gap-2 rounded-[14px] px-[18px] py-[11px] text-[14.5px] font-extrabold text-white"
           style={{
             background: "linear-gradient(180deg, #F4977E, #EE8164)",
@@ -158,6 +186,43 @@ export function KidsDirectory({ kids }: KidsDirectoryProps) {
           ))}
         </div>
       )}
+
+      {isAddModalOpen ? (
+        <AddKidModal
+          onClose={() => setIsAddModalOpen(false)}
+          onSave={handleSaveKid}
+        />
+      ) : null}
+
+      {toast ? (
+        <div className="pointer-events-none fixed inset-x-0 bottom-6 z-40 flex justify-center px-4">
+          <div
+            key={toast.id}
+            role="status"
+            aria-live="polite"
+            className="pointer-events-auto flex items-center gap-3 rounded-[16px] border border-[#CFE3D5] bg-[#F3FBF5] px-5 py-3.5 shadow-[0_16px_36px_-18px_rgba(63,54,46,.45)] animate-[toast-in_200ms_ease-out] motion-reduce:animate-none"
+          >
+            <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[#CFEBD8]">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#3E9B6C"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m5 12 4.5 4.5L19 7" />
+              </svg>
+            </span>
+            <span className="text-[14.5px] font-extrabold text-[#3F362E]">
+              {toast.message}
+            </span>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

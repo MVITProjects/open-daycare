@@ -307,7 +307,7 @@ export function AddKidModal({ onClose, onSave }: AddKidModalProps) {
                 </p>
               ) : null}
 
-              <div className="mb-[18px] flex gap-[14px]">
+              <div className="mb-[18px] flex flex-col gap-[18px] sm:flex-row sm:gap-[14px]">
                 <div className="min-w-0 flex-1">
                   <label htmlFor="add-kid-birthdate" className={LABEL_CLASSES}>
                     FECHA DE NACIMIENTO
@@ -334,6 +334,11 @@ export function AddKidModal({ onClose, onSave }: AddKidModalProps) {
                         : INPUT_NORMAL_CLASSES
                     }`}
                   />
+                  {errors.birthDate ? (
+                    <p id={dateErrorId} role="alert" className={ERROR_TEXT_CLASSES}>
+                      {errors.birthDate}
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="min-w-0 flex-1">
@@ -380,18 +385,13 @@ export function AddKidModal({ onClose, onSave }: AddKidModalProps) {
                       <path d="m6 9 6 6 6-6" />
                     </svg>
                   </div>
+                  {errors.roomName ? (
+                    <p id={roomErrorId} role="alert" className={ERROR_TEXT_CLASSES}>
+                      {errors.roomName}
+                    </p>
+                  ) : null}
                 </div>
               </div>
-              {errors.birthDate ? (
-                <p id={dateErrorId} role="alert" className={`${ERROR_TEXT_CLASSES} -mt-3 mb-[18px]`}>
-                  {errors.birthDate}
-                </p>
-              ) : null}
-              {errors.roomName ? (
-                <p id={roomErrorId} role="alert" className={`${ERROR_TEXT_CLASSES} -mt-3 mb-[18px]`}>
-                  {errors.roomName}
-                </p>
-              ) : null}
 
               <label htmlFor="add-kid-allergies" className={LABEL_CLASSES}>
                 ALERGIAS (ETIQUETAS)
